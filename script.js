@@ -1,22 +1,27 @@
 const container = document.querySelector("#container")
-const vvod = document.querySelector("#myInput")
-const button = document.querySelector("#myButton")
+const buttons = document.querySelectorAll("button")
 
 container.setAttribute("style", "display: flex; flex-wrap: wrap; background-color: rgba(81, 129, 177, 0.6); width: 800px; height: 800px; margin: 0 auto;")
 
 let scale = 0
+let color = "green"
 
-button.addEventListener('click', function(){
-    scale = vvod.value;
-    container.innerHTML = ''
-    let percent = 0
-    for(let i = 0; i < scale*scale; i++){
-        let malDiv = document.createElement("div");
-        percent = 100 / scale;
-        malDiv.setAttribute("style", `width: ${percent}%; height: ${percent}%; background-color: brown;`)
-        malDiv.addEventListener('mouseenter', () => {
-            malDiv.style.backgroundColor = 'black';
-        });
-        container.append(malDiv);
-    }
+buttons.forEach((button) => {
+    button.addEventListener('click', () =>{
+        scale = button.id
+        if (scale > 129){
+            scale = 128
+        }
+        container.innerHTML = ''
+        let percent = 100 / scale
+        for(let i = 0; i < scale*scale; i++){
+            let malDiv = document.createElement("div");
+            malDiv.setAttribute("style", `width: ${percent}%; height: ${percent}%; background-color: brown;`)
+            malDiv.addEventListener('mouseenter', () => {
+                malDiv.style.backgroundColor = color;
+            });
+            container.append(malDiv);
+        }
+    })
 })
+
