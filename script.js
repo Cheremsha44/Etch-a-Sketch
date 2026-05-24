@@ -4,5 +4,8 @@ container.setAttribute("style", "display: flex; flex-wrap: wrap; background-colo
 for(let i = 0; i < 256; i++){
     let malDiv = document.createElement("div");
     malDiv.classList.add("child");
+    malDiv.addEventListener('mouseenter', () => {
+        malDiv.style.backgroundColor = 'black';
+    });
     container.append(malDiv);
 }
