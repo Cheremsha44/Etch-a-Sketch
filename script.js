@@ -13,7 +13,9 @@ function createGrid(scale){
         let malDiv = document.createElement("div");
         malDiv.setAttribute("style", `width: ${percent}%; height: ${percent}%; background-color: brown;`)
         malDiv.addEventListener('mouseenter', () => {
-            malDiv.style.backgroundColor = color;
+            if (event.buttons === 1) {
+                malDiv.style.backgroundColor = color;
+            }
         });
         container.append(malDiv);
     }
